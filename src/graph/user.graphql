@@ -1,0 +1,121 @@
+query userList($namelike:String!,$paginator: paginator){
+  UserList(qfilter:{combinator:AND
+                    key:"nickname"
+                    operator:LIKE
+                    value:$namelike
+                  },paginator:$paginator){
+    totalPages
+    totalElements
+    content {
+          nickname
+          phone
+          createtime
+          disabled
+          updatetime
+          id
+          createactorid
+          updateactorid
+          roleItems {
+            role {
+              id
+            }
+            id
+          }
+          number
+          password
+        }
+  }
+}
+
+
+query userListNoQuery($paginator: paginator){
+  UserList(paginator:$paginator){
+    totalPages
+    totalElements
+    content {
+          nickname
+          phone
+          createtime
+          disabled
+          updatetime
+          id
+          createactorid
+          updateactorid
+          roleItems {
+            role {
+              id
+            }
+            id
+          }
+          number
+          password
+        }
+  }
+}
+
+
+mutation userRegister($user: User_!) {
+  user_register(user: $user) {
+    updateactorid
+    password
+    nickname
+    createtime
+    id
+    roleItems {
+      role {
+        id
+      }
+      id
+    }
+    disabled
+    phone
+    number
+    createactorid
+    updatetime
+  }
+}
+
+query getRoleList{
+  RoleList{
+    totalPages
+    totalElements
+    content{
+      id
+      name
+      number
+      createtime
+      privilegeItems{
+        id
+        constraintRule
+        privilege{
+          id
+          name
+          number
+          privilege
+          category
+        }
+      }
+    }
+  }
+}
+
+mutation userUpdate($user: User_!) {
+  user_update(user: $user) {
+    updateactorid
+    password
+    nickname
+    createtime
+    id
+    roleItems {
+      role {
+        id
+      }
+      id
+    }
+    disabled
+    phone
+    number
+    createactorid
+    updatetime
+  }
+}

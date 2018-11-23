@@ -1,0 +1,84 @@
+query messageList($sendUser:String, $paginator: paginator){
+  MessageList(
+    qfilter:{
+      combinator:AND
+      key:"sendUser.id"
+      operator:LIKE
+      value:$sendUser
+    },paginator:$paginator){
+    totalPages
+    totalElements
+    content{
+      id
+      number
+      createtime
+      content
+      title
+      disabled
+      receivers{
+        id
+        readed
+        user{
+          id
+          nickname
+          phone
+        }
+      }
+      sendUser{
+        id
+        number
+        nickname
+        phone
+      }
+    }
+  }
+}
+
+query messageList1($sendUser:String, $paginator: paginator){
+  MessageList(
+    qfilter:{
+      combinator:AND
+      key:"receivers.user.id"
+      operator:LIKE
+      value:$sendUser
+    },paginator:$paginator){
+    totalPages
+    totalElements
+    content{
+      id
+      number
+      createtime
+      content
+      title
+      disabled
+      receivers{
+        id
+        readed
+        user{
+          id
+          nickname
+          phone
+        }
+      }
+      sendUser{
+        id
+        number
+        nickname
+        phone
+      }
+    }
+  }
+}
+
+
+
+
+mutation sendMessage($message: Message_!){
+  message_sendMessage(message:$message){
+    id
+  }
+}
+
+mutation userReaded($messageId: String!,$userId: String!){
+  messages_userReaded(messageId:$messageId,userId:$userId)
+}

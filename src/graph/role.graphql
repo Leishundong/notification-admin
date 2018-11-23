@@ -1,0 +1,83 @@
+query RoleList($paginator: paginator){
+  RoleList(paginator:$paginator){
+    totalPages
+    totalElements
+    content{
+      id
+      name
+      number
+      createtime
+      privilegeItems{
+        id
+        constraintRule
+        privilege{
+          id
+          name
+          number
+          privilege
+          category
+        }
+      }
+    }
+  }
+}
+
+query getPrivilegeItemList($paginator: paginator!) {
+  PrivilegeItemList(paginator: $paginator) {
+    totalPages
+    totalElements
+    content {
+      id
+      constraintRule
+      privilege {
+        id
+      }
+    }
+  }
+}
+
+query PrivilegeList($paginator: paginator!) {
+  PrivilegeList(paginator: $paginator) {
+    totalPages
+    totalElements
+    content {
+      name
+      updatetime
+      id
+      createactorid
+      privilege
+      number
+      disabled
+      createtime
+      category
+      updateactorid
+    }
+  }
+}
+
+mutation roleAdd($role: Role_!) {
+  role_add(role: $role) {
+    name
+    updatetime
+    id
+    createactorid
+    number
+    disabled
+    createtime
+    privilegeItems {
+      id
+      constraintRule
+      privilege {
+        id
+      }
+    }
+    updateactorid
+  }
+}
+
+
+mutation updateRole($role: Role_!){
+  role_update(role:$role){
+    id
+  }
+}
