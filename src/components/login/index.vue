@@ -33,8 +33,8 @@
     data() {
       return {
         loginForm: {
-          username: '1391',
-          password: '123456'
+          username: '13512343423',
+          password: '1'
         },
         loginRules: {
           username: [{required: true, trigger: 'blur'}],

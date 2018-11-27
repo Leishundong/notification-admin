@@ -43,6 +43,7 @@ export let formRulesMixin = {
       param: {paginator: {size: 5, page: 1}},//分页参数,
       copyNameLike: '%%',
       historyPage: 'History-Page',//存放当前页数
+      toBe:true
     }
   },
   computed: {
@@ -55,6 +56,9 @@ export let formRulesMixin = {
   },
   created() {
     this._initPage();
+  },
+  mounted(){
+    this.toBe = false
   },
   methods: {
     r(required) {//规则组合器
@@ -124,7 +128,6 @@ export let formRulesMixin = {
         } else if (this.param.namelike != this.copyNameLike && this.param.namelike == '%%') {
           this.param.paginator.page = this.getHistoryPage();
         }
-        console.log('要refetch了');
         this.refetch();
         if(this.param.namelike != this.copyNameLike && this.param.namelike == '%%') {
           this.param.paginator.page = Number(this.getHistoryPage());

@@ -44,6 +44,9 @@ export default {
       default: false
     }
   },
+  created(){
+    /*console.log(this.routes);*/
+  },
   methods: {
     hasOneShowingChildren(children) {
       const showingChildren = children.filter(item => {

@@ -25,6 +25,13 @@ export default {
       'sidebar'
     ]),
     routes() {
+      /*this.$router.options.routes.forEach((item)=>{
+        if(item.hidden){
+          console.log('hidden',item);
+        }else {
+          console.log(item);
+        }
+      })*/
       return this.$router.options.routes
     },
     isCollapse() {

@@ -131,7 +131,6 @@
       },
       dialogConfirm() {
         let user = this.handleUserData(this.user);
-        console.log(user);
         this.gqlMutate(this.dialogType==='add'?userApi.userRegister:userApi.userUpdate,{user:user},function (data) {
           if(data){
             this.callback(`${this.title}成功`)
