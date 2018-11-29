@@ -80,6 +80,7 @@
     "karma-spec-reporter": "0.0.32",
     "karma-webpack": "^3.0.5",
     "mocha": "^5.2.0",
+    "mockjs": "^1.0.1-beta3",
     "node-notifier": "5.1.2",
     "node-sass": "^4.7.2",
     "nodemon": "^1.11.0",

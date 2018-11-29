@@ -151,9 +151,11 @@ export let formRulesMixin = {
     //便利方法，供在apollo:配置块中使用。设置好默认值，只要给一个query对象或者gql字符串即可
     //只限于list列表等需要分页的模块使用，且同一组件只能用一个
     getEntityListWithPagintor(queryObject, skipFunction) {
+      console.log('理论上我进来了')
       queryObject = queryObject.query ? queryObject : {query: queryObject};
+      console.log(queryObject)
       var target = {
-//      loadingKey: 'loading',
+        /*loadingKey: 'loading',*/
         update: function (data) {
           //深拷贝
           var deepclonedata = JSON.parse(JSON.stringify(data));

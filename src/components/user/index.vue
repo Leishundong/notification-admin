@@ -59,6 +59,7 @@
   import userApi from 'graph/user.graphql';
   /*import {historyPageMixin} from 'common/js/mixin';*/
   import {formRulesMixin} from '../../field/common/mixinComponent';
+  import {ajaxMethod} from  'common/ajaxJs';
 
 
   export default {
@@ -71,10 +72,10 @@
         },
         user: {},
         roleList:[],
-        dialogType:''
+        dialogType:'',
+        testName:''
       }
     },
-
     apollo: {
       list() {//loadingKey
         //created的时候会执行一次，context代表的是vm对象，调试时可以查阅代码：vue-apollo.esm.js:  options = options.call(context)
@@ -90,10 +91,18 @@
       }
     },
     created(){
-      this.getRoleList()
+      this.getRoleList();
+      this.isAjax()
     },
 
     methods: {
+      isAjax(){
+        ajaxMethod('http://123.com',null,'post',function(data){
+          this.testName = data;
+          console.log(this.testName);
+        })
+      },
+
       formatTime(time) {
         if (time == null) return;
         return new Date(parseInt(time)).toLocaleString().replace(/:\d{1,2}$/, ' ');
